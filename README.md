@@ -1,0 +1,1 @@
+[![Build status](https://ci.appveyor.com/api/projects/status/3geahs6n9ysttimx/branch/main?svg=true)](https://ci.appveyor.com/project/KovalevskayaX5/debetcard-selenium/branch/main)
