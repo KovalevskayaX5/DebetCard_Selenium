@@ -42,10 +42,10 @@ public class DebetCardSelenuimTest {
     void positiveTest1() {
         //WebElement form = driver.findElement(By.cssSelector("[data-test-id=callback-form]"));
         List<WebElement> elements = driver.findElements(By.className("input__control"));
-        driver.findElement(By.cssSelector("[data-test-id=name] input")).sendKeys("Ковалевская Яна");
-        driver.findElement(By.cssSelector("[data-test-id=phone] input")).sendKeys("+79896340085");
-        driver.findElement(By.cssSelector("[data-test-id=agreement]")).click();
-        driver.findElement(By.cssSelector("[data-test-id=submit]")).click();
+        elements.get(0).sendKeys("Ковалевская Яна");
+        elements.get(1).sendKeys("+79986340085");
+        driver.findElement(By.className("checkbox__control")).click();
+        driver.findElement(By.className("button__text")).click();
         String actual = driver.findElement(By.className("order-success")).getText().trim();
         String expected = "Ваша заявка успешно отправлена! Наш менеджер свяжется с вами в ближайшее время.";
         assertEquals(expected, actual);
