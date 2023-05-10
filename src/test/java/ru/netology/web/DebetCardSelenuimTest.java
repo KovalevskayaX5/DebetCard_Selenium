@@ -40,8 +40,8 @@ public class DebetCardSelenuimTest {
 
     @Test
     void positiveTest1() {
-        WebElement form = driver.findElement(By.cssSelector("[data-test-id=callback-form]"));
-        //List<WebElement> elements = driver.findElements(By.className("input__control"));
+        //WebElement form = driver.findElement(By.cssSelector("[data-test-id=callback-form]"));
+        List<WebElement> elements = driver.findElements(By.className("input__control"));
         driver.findElement(By.cssSelector("[data-test-id=name] input")).sendKeys("Ковалевская Яна");
         driver.findElement(By.cssSelector("[data-test-id=phone] input")).sendKeys("+79896340085");
         driver.findElement(By.cssSelector("[data-test-id=agreement]")).click();
