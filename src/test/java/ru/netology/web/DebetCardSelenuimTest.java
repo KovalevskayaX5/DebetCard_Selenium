@@ -1,10 +1,6 @@
 package ru.netology.web;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -22,7 +18,9 @@ public class DebetCardSelenuimTest {
     @BeforeAll
     static void setUpAll() {
         WebDriverManager.chromedriver().setup();
+        //System.setProperty("webdriver.chrome.driver", "C:\\Users\\Public\\Downloads\\aqa-code\\api-ci\\DebetCard_Selenium\\driver\\chromedriver.exe");
     }
+
 
     @BeforeEach
     void setUp() {
@@ -41,16 +39,17 @@ public class DebetCardSelenuimTest {
     }
 
     @Test
-    void positiveTest1(){
-        driver.get("http://localhost:7777");
-        List<WebElement> elements = driver.findElements(By.className("input__control"));
-        elements.get(0).sendKeys("Ковалевская Яна");
-        elements.get(1).sendKeys("+79896340085");
-        driver.findElement(By.cssSelector("[data-test-id=agreement]"));
-        driver.findElement(By.className("button")).click();
-        String text = driver.findElement(By.className("order-success")).getText();
-        assertEquals("Ваша заявка успешно отправлена! Наш менеджер свяжется с вами в ближайшее время.", text.trim());
+    void positiveTest1() {
+        WebElement form = driver.findElement(By.cssSelector("[data-test-id=callback-form]"));
+        //List<WebElement> elements = driver.findElements(By.className("input__control"));
+        driver.findElement(By.cssSelector("[data-test-id=name] input")).sendKeys("Ковалевская Яна");
+        driver.findElement(By.cssSelector("[data-test-id=phone] input")).sendKeys("+79896340085");
+        driver.findElement(By.cssSelector("[data-test-id=agreement]")).click();
+        driver.findElement(By.cssSelector("[data-test-id=submit]")).click();
+        String actual = driver.findElement(By.className("order-success")).getText().trim();
+        String expected = "Ваша заявка успешно отправлена! Наш менеджер свяжется с вами в ближайшее время.";
+        assertEquals(expected, actual);
+
 
     }
-
 }
